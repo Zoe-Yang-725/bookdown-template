@@ -1,9 +1,111 @@
 --- 
-title: "YOUR TITLE HERE"
-author: "YOUR NAME HERE"
-date: "`r Sys.Date()`"
+title: "Temperature Monitoring Project Documentation"
 site: bookdown::bookdown_site
+bibliography: references.bib
 ---
 
-# Down the rabbit-hole
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE, comment=NA, fig.align='center', cache=TRUE)
+```
+
+
+*** 
+
+# Files Combination
+
+*** 
+
+## Overview
+
+This section combines the two raw temperature data files from the **Time in Motion** experiment into one complete raw dataset.
+
+```{r, echo = TRUE, class.source="fold-show"}
+# Load any R packages you need here
+library(ggplot2)
+library(gridExtra)
+library(BB)
+library(VGAM)
+library(fitdistrplus)
+library(tidyverse)
+library(gridExtra)
+library(splines)
+library(dplyr)
+library(plotly)
+library(latex2exp)
+library(AcceptanceSampling)
+library(png)
+library(knitr)
+library(scam)
+```
+
+## Input Files 
+
+The following two raw temperature data files are used:
+
+  * *Time_In_Motion_temperature_data.csv*
+
+    covers the time range from 2025-07-14 08:00:00 am to 2025-08-01 07:59:00 am
+    
+```{r, echo = TRUE, results = 'hide', class.source="fold-show"}
+#Load the 1st data file
+df_temp_pre <- read.csv("data/raw/Time_In_Motion_temperature_data.csv")
+#time stamp standardization
+df_temp_pre <- df_temp_pre |> 
+  mutate(time_stamp=floor_date(as.POSIXct(timestamp,
+                                          tryFormats=c("%Y-%m-%d %H:%M:%OS")),
+                               unit="minute"))
+summary(df_temp_pre)
+```
+
+
+  * *RR_Data_temperature_Aug_to_October.csv*
+
+    covers the time range from 2025-08-01 08:00:00 am to 2025-10-03 09:46:00 am
+
+```{r, echo = TRUE, results = 'hide', class.source="fold-show"}
+#Load the 2nd data file
+df_temp <- read.csv("data/raw/RR_Data_temperature_Aug_to_October.csv")
+#time stamp standardization
+df_temp <- df_temp |> 
+  mutate(time_stamp=floor_date(as.POSIXct(timestamp,
+                                          tryFormats=c("%Y-%m-%d %H:%M:%OS")),
+                               unit="minute"))
+summary(df_temp)
+```
+
+
+## Output File
+
+The output file of this section is:
+
+* *Time_in_Motion_temperature_complete.csv* 
+  
+  * the complete raw temperature dataset for the **Time in Motion** experiment and covers the time range from 2025-07-14 08:00:00 am to 2025-10-03 09:46:00 am
+
+```{r, echo = TRUE, results = 'hide', class.source="fold-show"}
+#combine two datasets into one to do further analysis
+df_temp_all <- bind_rows(df_temp_pre, df_temp) |>
+  arrange(SystemID, time_stamp)
+summary(df_temp_all)
+
+#save as the whole Time in Motion dataset as a CSV file and name is: Time_in_Motion_temperature_complete.csv (option)
+#write.csv(df_temp_all, "data/raw/Time_in_Motion_temperature_complete.csv", row.names = FALSE)
+
+#read the whole dataset from the new file, just for checking (option)
+#df_temp_new <- read.csv("data/raw/Time_in_Motion_temperature_complete.csv")
+#summary(df_temp_new)
+```
+
+
+### Variables in the Output File
+
+The complete raw temperature dataset contains the following variables:
+
+- `SystemID`: original numeric reactor system identifier, recorded as values from $1$ to $40$
+- `timestamp`: original recorded timestamp
+- `reactor_temperature`: recorded reactor temperature
+- `time_stamp`: standardized timestamp rounded down to the nearest minute
+
+
+
 
