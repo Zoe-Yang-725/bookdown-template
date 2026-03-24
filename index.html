@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Temperature Monitoring Project Documentation</title>
+  <meta name="description" content="Temperature Monitoring Project Documentation" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Temperature Monitoring Project Documentation" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Temperature Monitoring Project Documentation" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="shared-setup-and-helper-functions.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/codefolding-lua-1.1/codefolding-lua.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">SHORT TITLE HERE</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Files Combination</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#overview"><i class="fa fa-check"></i><b>1.1</b> Overview</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#input-files"><i class="fa fa-check"></i><b>1.2</b> Input Files</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#output-file"><i class="fa fa-check"></i><b>1.3</b> Output File</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#variables-in-the-output-file"><i class="fa fa-check"></i><b>1.3.1</b> Variables in the Output File</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="shared-setup-and-helper-functions.html"><a href="shared-setup-and-helper-functions.html"><i class="fa fa-check"></i><b>2</b> Shared Setup and Helper Functions</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="shared-setup-and-helper-functions.html"><a href="shared-setup-and-helper-functions.html#overview-1"><i class="fa fa-check"></i><b>2.1</b> Overview</a></li>
+<li class="chapter" data-level="2.2" data-path="shared-setup-and-helper-functions.html"><a href="shared-setup-and-helper-functions.html#main-function-components"><i class="fa fa-check"></i><b>2.2</b> Main Function Components</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="shared-setup-and-helper-functions.html"><a href="shared-setup-and-helper-functions.html#time-zone-setup"><i class="fa fa-check"></i><b>2.2.1</b> Time Zone Setup</a></li>
+<li class="chapter" data-level="2.2.2" data-path="shared-setup-and-helper-functions.html"><a href="shared-setup-and-helper-functions.html#reactor-unit-and-treatment-condition-mapping"><i class="fa fa-check"></i><b>2.2.2</b> Reactor Unit and Treatment Condition Mapping</a></li>
+<li class="chapter" data-level="2.2.3" data-path="shared-setup-and-helper-functions.html"><a href="shared-setup-and-helper-functions.html#data-loading-and-initial-pre-processing"><i class="fa fa-check"></i><b>2.2.3</b> Data Loading and Initial Pre-processing</a></li>
+<li class="chapter" data-level="2.2.4" data-path="shared-setup-and-helper-functions.html"><a href="shared-setup-and-helper-functions.html#feeding-window-removal"><i class="fa fa-check"></i><b>2.2.4</b> Feeding-window Removal</a></li>
+<li class="chapter" data-level="2.2.5" data-path="shared-setup-and-helper-functions.html"><a href="shared-setup-and-helper-functions.html#eda-summary-helpers"><i class="fa fa-check"></i><b>2.2.5</b> EDA Summary Helpers</a></li>
+<li class="chapter" data-level="2.2.6" data-path="shared-setup-and-helper-functions.html"><a href="shared-setup-and-helper-functions.html#plot-helper"><i class="fa fa-check"></i><b>2.2.6</b> Plot Helper</a></li>
+<li class="chapter" data-level="2.2.7" data-path="shared-setup-and-helper-functions.html"><a href="shared-setup-and-helper-functions.html#distribution-diagnosis"><i class="fa fa-check"></i><b>2.2.7</b> Distribution Diagnosis</a></li>
+<li class="chapter" data-level="2.2.8" data-path="shared-setup-and-helper-functions.html"><a href="shared-setup-and-helper-functions.html#temperature-monitoring-preparation"><i class="fa fa-check"></i><b>2.2.8</b> Temperature Monitoring Preparation</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="eda-for-temperature-data.html"><a href="eda-for-temperature-data.html"><i class="fa fa-check"></i><b>3</b> EDA for Temperature Data</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="eda-for-temperature-data.html"><a href="eda-for-temperature-data.html#overview-2"><i class="fa fa-check"></i><b>3.1</b> Overview</a></li>
+<li class="chapter" data-level="3.2" data-path="eda-for-temperature-data.html"><a href="eda-for-temperature-data.html#load-shared-setup-and-helper-functions"><i class="fa fa-check"></i><b>3.2</b> Load Shared Setup and Helper Functions</a></li>
+<li class="chapter" data-level="3.3" data-path="eda-for-temperature-data.html"><a href="eda-for-temperature-data.html#main-eda-components"><i class="fa fa-check"></i><b>3.3</b> Main EDA Components</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="eda-for-temperature-data.html"><a href="eda-for-temperature-data.html#load-data"><i class="fa fa-check"></i><b>3.3.1</b> Load Data</a></li>
+<li class="chapter" data-level="3.3.2" data-path="eda-for-temperature-data.html"><a href="eda-for-temperature-data.html#quick-checks"><i class="fa fa-check"></i><b>3.3.2</b> Quick Checks</a></li>
+<li class="chapter" data-level="3.3.3" data-path="eda-for-temperature-data.html"><a href="eda-for-temperature-data.html#structural-checks"><i class="fa fa-check"></i><b>3.3.3</b> Structural Checks</a></li>
+<li class="chapter" data-level="3.3.4" data-path="eda-for-temperature-data.html"><a href="eda-for-temperature-data.html#eda-summary-statistics"><i class="fa fa-check"></i><b>3.3.4</b> EDA Summary Statistics</a></li>
+<li class="chapter" data-level="3.3.5" data-path="eda-for-temperature-data.html"><a href="eda-for-temperature-data.html#feeding-window-removal-1"><i class="fa fa-check"></i><b>3.3.5</b> Feeding Window Removal</a></li>
+<li class="chapter" data-level="3.3.6" data-path="eda-for-temperature-data.html"><a href="eda-for-temperature-data.html#comparison"><i class="fa fa-check"></i><b>3.3.6</b> Comparison</a></li>
+<li class="chapter" data-level="3.3.7" data-path="eda-for-temperature-data.html"><a href="eda-for-temperature-data.html#time-series-plots-over-the-full-period"><i class="fa fa-check"></i><b>3.3.7</b> Time Series Plots over the Full Period</a></li>
+<li class="chapter" data-level="3.3.8" data-path="eda-for-temperature-data.html"><a href="eda-for-temperature-data.html#time-series-plot-in-a-specified-time-range"><i class="fa fa-check"></i><b>3.3.8</b> Time Series Plot in a Specified Time Range</a></li>
+<li class="chapter" data-level="3.3.9" data-path="eda-for-temperature-data.html"><a href="eda-for-temperature-data.html#distribution-exploration-after-feeding-window-removal"><i class="fa fa-check"></i><b>3.3.9</b> Distribution Exploration after Feeding-window Removal</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-cleaning-for-monitoring.html"><a href="data-cleaning-for-monitoring.html"><i class="fa fa-check"></i><b>4</b> Data Cleaning for Monitoring</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="data-cleaning-for-monitoring.html"><a href="data-cleaning-for-monitoring.html#overview-3"><i class="fa fa-check"></i><b>4.1</b> Overview</a></li>
+<li class="chapter" data-level="4.2" data-path="data-cleaning-for-monitoring.html"><a href="data-cleaning-for-monitoring.html#load-shared-eetup-and-helper-functions"><i class="fa fa-check"></i><b>4.2</b> Load Shared Eetup and Helper Functions</a></li>
+<li class="chapter" data-level="4.3" data-path="data-cleaning-for-monitoring.html"><a href="data-cleaning-for-monitoring.html#main-data-cleaning-components"><i class="fa fa-check"></i><b>4.3</b> Main Data Cleaning Components</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="data-cleaning-for-monitoring.html"><a href="data-cleaning-for-monitoring.html#load-raw-full-data"><i class="fa fa-check"></i><b>4.3.1</b> Load Raw Full Data</a></li>
+<li class="chapter" data-level="4.3.2" data-path="data-cleaning-for-monitoring.html"><a href="data-cleaning-for-monitoring.html#check-treatment-condition-labels"><i class="fa fa-check"></i><b>4.3.2</b> Check Treatment Condition Labels</a></li>
+<li class="chapter" data-level="4.3.3" data-path="data-cleaning-for-monitoring.html"><a href="data-cleaning-for-monitoring.html#function-to-identify-abnormal-period"><i class="fa fa-check"></i><b>4.3.3</b> Function to Identify Abnormal Period</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="data-cleaning-for-monitoring.html"><a href="data-cleaning-for-monitoring.html#data-pre-processing-for-temperature-monitoring"><i class="fa fa-check"></i><b>4.4</b> Data Pre-processing for Temperature Monitoring</a></li>
+<li class="chapter" data-level="4.5" data-path="data-cleaning-for-monitoring.html"><a href="data-cleaning-for-monitoring.html#summary"><i class="fa fa-check"></i><b>4.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="temperature-monitoring-control-chart-development.html"><a href="temperature-monitoring-control-chart-development.html"><i class="fa fa-check"></i><b>5</b> Temperature Monitoring Control Chart Development</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="temperature-monitoring-control-chart-development.html"><a href="temperature-monitoring-control-chart-development.html#overview-4"><i class="fa fa-check"></i><b>5.1</b> Overview</a></li>
+<li class="chapter" data-level="5.2" data-path="temperature-monitoring-control-chart-development.html"><a href="temperature-monitoring-control-chart-development.html#load-setup-file-and-cleaned-monitoring-data"><i class="fa fa-check"></i><b>5.2</b> Load Setup file and cleaned monitoring data</a></li>
+<li class="chapter" data-level="5.3" data-path="temperature-monitoring-control-chart-development.html"><a href="temperature-monitoring-control-chart-development.html#user-settings"><i class="fa fa-check"></i><b>5.3</b> User settings</a></li>
+<li class="chapter" data-level="5.4" data-path="temperature-monitoring-control-chart-development.html"><a href="temperature-monitoring-control-chart-development.html#remove-the-feeding-window"><i class="fa fa-check"></i><b>5.4</b> Remove the feeding window</a></li>
+<li class="chapter" data-level="5.5" data-path="temperature-monitoring-control-chart-development.html"><a href="temperature-monitoring-control-chart-development.html#prepare-the-monitoring-series"><i class="fa fa-check"></i><b>5.5</b> Prepare the monitoring series</a></li>
+<li class="chapter" data-level="5.6" data-path="temperature-monitoring-control-chart-development.html"><a href="temperature-monitoring-control-chart-development.html#distribution-checks-for-the-processed-series"><i class="fa fa-check"></i><b>5.6</b> Distribution checks for the processed series</a></li>
+<li class="chapter" data-level="5.7" data-path="temperature-monitoring-control-chart-development.html"><a href="temperature-monitoring-control-chart-development.html#ewma-helper-function"><i class="fa fa-check"></i><b>5.7</b> EWMA helper function</a></li>
+<li class="chapter" data-level="5.8" data-path="temperature-monitoring-control-chart-development.html"><a href="temperature-monitoring-control-chart-development.html#build-baseline-statistics-for-the-ewma-chart"><i class="fa fa-check"></i><b>5.8</b> Build baseline statistics for the EWMA chart</a></li>
+<li class="chapter" data-level="5.9" data-path="temperature-monitoring-control-chart-development.html"><a href="temperature-monitoring-control-chart-development.html#detect-flatline-behaviour-in-the-raw-temperature-series"><i class="fa fa-check"></i><b>5.9</b> Detect flatline behaviour in the raw temperature series</a></li>
+<li class="chapter" data-level="5.10" data-path="temperature-monitoring-control-chart-development.html"><a href="temperature-monitoring-control-chart-development.html#create-raw-summaries-on-the-monitoring-grid"><i class="fa fa-check"></i><b>5.10</b> Create raw summaries on the monitoring grid</a></li>
+<li class="chapter" data-level="5.11" data-path="temperature-monitoring-control-chart-development.html"><a href="temperature-monitoring-control-chart-development.html#phase-ii-ewma-monitoring"><i class="fa fa-check"></i><b>5.11</b> Phase II EWMA monitoring</a></li>
+<li class="chapter" data-level="5.12" data-path="temperature-monitoring-control-chart-development.html"><a href="temperature-monitoring-control-chart-development.html#empirical-one-sided-extreme-limits"><i class="fa fa-check"></i><b>5.12</b> Empirical one-sided extreme limits</a></li>
+<li class="chapter" data-level="5.13" data-path="temperature-monitoring-control-chart-development.html"><a href="temperature-monitoring-control-chart-development.html#combine-all-monitoring-rules"><i class="fa fa-check"></i><b>5.13</b> Combine all monitoring rules</a></li>
+<li class="chapter" data-level="5.14" data-path="temperature-monitoring-control-chart-development.html"><a href="temperature-monitoring-control-chart-development.html#extract-alarm-output"><i class="fa fa-check"></i><b>5.14</b> Extract alarm output</a></li>
+<li class="chapter" data-level="5.15" data-path="temperature-monitoring-control-chart-development.html"><a href="temperature-monitoring-control-chart-development.html#create-minute-level-output-with-monitoring-annotations"><i class="fa fa-check"></i><b>5.15</b> Create minute-level output with monitoring annotations</a></li>
+<li class="chapter" data-level="5.16" data-path="temperature-monitoring-control-chart-development.html"><a href="temperature-monitoring-control-chart-development.html#function-to-draw-the-control-chart"><i class="fa fa-check"></i><b>5.16</b> Function to draw the control chart</a></li>
+<li class="chapter" data-level="5.17" data-path="temperature-monitoring-control-chart-development.html"><a href="temperature-monitoring-control-chart-development.html#example-control-chart-plots"><i class="fa fa-check"></i><b>5.17</b> Example control chart plots</a></li>
+<li class="chapter" data-level="5.18" data-path="temperature-monitoring-control-chart-development.html"><a href="temperature-monitoring-control-chart-development.html#summary-1"><i class="fa fa-check"></i><b>5.18</b> Summary</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Temperature Monitoring Project Documentation</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Temperature Monitoring Project Documentation</h1>
+</div>
+<div id="files-combination" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">Chapter 1</span> Files Combination<a href="index.html#files-combination" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<hr />
+<div id="overview" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Overview<a href="index.html#overview" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This section combines the two raw temperature data files from the <strong>Time in Motion</strong> experiment into one complete raw dataset.</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" tabindex="-1"></a><span class="co"># Load any R packages you need here</span></span>
+<span id="cb1-2"><a href="index.html#cb1-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-3"><a href="index.html#cb1-3" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb1-4"><a href="index.html#cb1-4" tabindex="-1"></a><span class="fu">library</span>(BB)</span>
+<span id="cb1-5"><a href="index.html#cb1-5" tabindex="-1"></a><span class="fu">library</span>(VGAM)</span>
+<span id="cb1-6"><a href="index.html#cb1-6" tabindex="-1"></a><span class="fu">library</span>(fitdistrplus)</span>
+<span id="cb1-7"><a href="index.html#cb1-7" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-8"><a href="index.html#cb1-8" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb1-9"><a href="index.html#cb1-9" tabindex="-1"></a><span class="fu">library</span>(splines)</span>
+<span id="cb1-10"><a href="index.html#cb1-10" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-11"><a href="index.html#cb1-11" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb1-12"><a href="index.html#cb1-12" tabindex="-1"></a><span class="fu">library</span>(latex2exp)</span>
+<span id="cb1-13"><a href="index.html#cb1-13" tabindex="-1"></a><span class="fu">library</span>(AcceptanceSampling)</span>
+<span id="cb1-14"><a href="index.html#cb1-14" tabindex="-1"></a><span class="fu">library</span>(png)</span>
+<span id="cb1-15"><a href="index.html#cb1-15" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb1-16"><a href="index.html#cb1-16" tabindex="-1"></a><span class="fu">library</span>(scam)</span></code></pre></div>
+</details>
+</div>
+<div id="input-files" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Input Files<a href="index.html#input-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The following two raw temperature data files are used:</p>
+<ul>
+<li><p><em>Time_In_Motion_temperature_data.csv</em></p>
+<p>covers the time range from 2025-07-14 08:00:00 am to 2025-08-01 07:59:00 am</p></li>
+</ul>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1" tabindex="-1"></a><span class="co">#Load the 1st data file</span></span>
+<span id="cb2-2"><a href="index.html#cb2-2" tabindex="-1"></a>df_temp_pre <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/raw/Time_In_Motion_temperature_data.csv&quot;</span>)</span>
+<span id="cb2-3"><a href="index.html#cb2-3" tabindex="-1"></a><span class="co">#time stamp standardization</span></span>
+<span id="cb2-4"><a href="index.html#cb2-4" tabindex="-1"></a>df_temp_pre <span class="ot">&lt;-</span> df_temp_pre <span class="sc">|&gt;</span> </span>
+<span id="cb2-5"><a href="index.html#cb2-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time_stamp=</span><span class="fu">floor_date</span>(<span class="fu">as.POSIXct</span>(timestamp,</span>
+<span id="cb2-6"><a href="index.html#cb2-6" tabindex="-1"></a>                                          <span class="at">tryFormats=</span><span class="fu">c</span>(<span class="st">&quot;%Y-%m-%d %H:%M:%OS&quot;</span>)),</span>
+<span id="cb2-7"><a href="index.html#cb2-7" tabindex="-1"></a>                               <span class="at">unit=</span><span class="st">&quot;minute&quot;</span>))</span>
+<span id="cb2-8"><a href="index.html#cb2-8" tabindex="-1"></a><span class="fu">summary</span>(df_temp_pre)</span></code></pre></div>
+</details>
+<ul>
+<li><p><em>RR_Data_temperature_Aug_to_October.csv</em></p>
+<p>covers the time range from 2025-08-01 08:00:00 am to 2025-10-03 09:46:00 am</p></li>
+</ul>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb3-1"><a href="index.html#cb3-1" tabindex="-1"></a><span class="co">#Load the 2nd data file</span></span>
+<span id="cb3-2"><a href="index.html#cb3-2" tabindex="-1"></a>df_temp <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/raw/RR_Data_temperature_Aug_to_October.csv&quot;</span>)</span>
+<span id="cb3-3"><a href="index.html#cb3-3" tabindex="-1"></a><span class="co">#time stamp standardization</span></span>
+<span id="cb3-4"><a href="index.html#cb3-4" tabindex="-1"></a>df_temp <span class="ot">&lt;-</span> df_temp <span class="sc">|&gt;</span> </span>
+<span id="cb3-5"><a href="index.html#cb3-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time_stamp=</span><span class="fu">floor_date</span>(<span class="fu">as.POSIXct</span>(timestamp,</span>
+<span id="cb3-6"><a href="index.html#cb3-6" tabindex="-1"></a>                                          <span class="at">tryFormats=</span><span class="fu">c</span>(<span class="st">&quot;%Y-%m-%d %H:%M:%OS&quot;</span>)),</span>
+<span id="cb3-7"><a href="index.html#cb3-7" tabindex="-1"></a>                               <span class="at">unit=</span><span class="st">&quot;minute&quot;</span>))</span>
+<span id="cb3-8"><a href="index.html#cb3-8" tabindex="-1"></a><span class="fu">summary</span>(df_temp)</span></code></pre></div>
+</details>
+</div>
+<div id="output-file" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Output File<a href="index.html#output-file" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The output file of this section is:</p>
+<ul>
+<li><p><em>Time_in_Motion_temperature_complete.csv</em></p>
+<ul>
+<li>the complete raw temperature dataset for the <strong>Time in Motion</strong> experiment and covers the time range from 2025-07-14 08:00:00 am to 2025-10-03 09:46:00 am</li>
+</ul></li>
+</ul>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb4-1"><a href="index.html#cb4-1" tabindex="-1"></a><span class="co">#combine two datasets into one to do further analysis</span></span>
+<span id="cb4-2"><a href="index.html#cb4-2" tabindex="-1"></a>df_temp_all <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(df_temp_pre, df_temp) <span class="sc">|&gt;</span></span>
+<span id="cb4-3"><a href="index.html#cb4-3" tabindex="-1"></a>  <span class="fu">arrange</span>(SystemID, time_stamp)</span>
+<span id="cb4-4"><a href="index.html#cb4-4" tabindex="-1"></a><span class="fu">summary</span>(df_temp_all)</span>
+<span id="cb4-5"><a href="index.html#cb4-5" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="index.html#cb4-6" tabindex="-1"></a><span class="co">#save as the whole Time in Motion dataset as a CSV file and name is: Time_in_Motion_temperature_complete.csv (option)</span></span>
+<span id="cb4-7"><a href="index.html#cb4-7" tabindex="-1"></a><span class="co">#write.csv(df_temp_all, &quot;data/raw/Time_in_Motion_temperature_complete.csv&quot;, row.names = FALSE)</span></span>
+<span id="cb4-8"><a href="index.html#cb4-8" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="index.html#cb4-9" tabindex="-1"></a><span class="co">#read the whole dataset from the new file, just for checking (option)</span></span>
+<span id="cb4-10"><a href="index.html#cb4-10" tabindex="-1"></a><span class="co">#df_temp_new &lt;- read.csv(&quot;data/raw/Time_in_Motion_temperature_complete.csv&quot;)</span></span>
+<span id="cb4-11"><a href="index.html#cb4-11" tabindex="-1"></a><span class="co">#summary(df_temp_new)</span></span></code></pre></div>
+</details>
+<div id="variables-in-the-output-file" class="section level3 hasAnchor" number="1.3.1">
+<h3><span class="header-section-number">1.3.1</span> Variables in the Output File<a href="index.html#variables-in-the-output-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The complete raw temperature dataset contains the following variables:</p>
+<ul>
+<li><code>SystemID</code>: original numeric reactor system identifier, recorded as values from <span class="math inline">\(1\)</span> to <span class="math inline">\(40\)</span></li>
+<li><code>timestamp</code>: original recorded timestamp</li>
+<li><code>reactor_temperature</code>: recorded reactor temperature</li>
+<li><code>time_stamp</code>: standardized timestamp rounded down to the nearest minute</li>
+</ul>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="shared-setup-and-helper-functions.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/YOUR GITHUB USERNAME/YOUR REPO NAME/edit/main/index.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": "https://github.com/YOUR GITHUB USERNAME/YOUR REPO NAME/blob/main/index.Rmd",
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
